@@ -1,24 +1,67 @@
-version: "3"
+version: '3.3'
 
 services:
-  temp_sensor:
-    image: antonaleks/data-simulator
+  sensor1:
+    build: .
     environment:
-      - SIM_HOST=192.168.1.1
-      - SIM_NAME=TIRCAHL24
-      - SIM_PERIOD=5
-      - SIM_TYPE=temperature
-  pressure_sensor:
-    image: antonaleks/data-simulator
+      SENSOR_TYPE: temperature
+      SENSOR_NAME: temp_1
+      INTERVAL: 3
+      BROKER_HOST: 192.168.0.150
+    networks:
+      - default
+
+  sensor2:
+    build: .
     environment:
-      - SIM_HOST=192.168.1.1
-      - SIM_NAME=PIRCAHL11
-      - SIM_PERIOD=10
-      - SIM_TYPE=pressure
-  current_sensor:
-    image: antonaleks/data-simulator
+      SENSOR_TYPE: pressure
+      SENSOR_NAME: pressure_1
+      INTERVAL: 4
+      BROKER_HOST: 192.168.0.150
+    networks:
+      - default
+
+  sensor3:
+    build: .
     environment:
-      - SIM_HOST=192.168.1.1
-      - SIM_NAME=A0_CURRENT
-      - SIM_PERIOD=1
-      - SIM_TYPE=current
+      SENSOR_TYPE: humidity
+      SENSOR_NAME: hum_1
+      INTERVAL: 5
+      BROKER_HOST: 192.168.0.150
+    networks:
+      - default
+
+  sensor4:
+    build: .
+    environment:
+      SENSOR_TYPE: current
+      SENSOR_NAME: curr_1
+      INTERVAL: 2
+      BROKER_HOST: 192.168.0.150
+    networks:
+      - default
+
+  sensor5:
+    build: .
+    environment:
+      SENSOR_TYPE: temperature
+      SENSOR_NAME: temp_2
+      INTERVAL: 3
+      BROKER_HOST: 192.168.0.150
+    networks:
+      - default
+
+  sensor6:
+    build: .
+    environment:
+      SENSOR_TYPE: pressure
+      SENSOR_NAME: pressure_2
+      INTERVAL: 6
+      BROKER_HOST: 192.168.0.150
+    networks:
+      - default
+
+networks:
+  default:
+    external:
+      name: iot_net

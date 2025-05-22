@@ -104,7 +104,7 @@ CREATE USER telegraf WITH PASSWORD 'telegraf' WITH ALL PRIVILEGES
 
 Финальные результаты работы:
 
-![Grafana](assets/images/Grafana.png)
+![Grafana](assets/images/grafana.png)
 
 Представленные скриншоты подтверждают работоспособность системы.
 Все необходимые файлы приложены в репозитории.
